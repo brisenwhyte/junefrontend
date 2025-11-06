@@ -4,14 +4,33 @@ import { useState } from "react";
 import { Mail, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { sendSignInLinkToEmail } from "firebase/auth";
+import { auth } from "@/firebaseClient";
 
 export default function Home() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email submitted:", email);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  console.log("Email submitted:", email);
+  console.log("gay");
+  const actionCodeSettings = {
+    url: "http://localhost:3000/verify",
+    handleCodeInApp: true,
   };
+  console.log("Auth object:", auth);
+  try {
+    console.log("Attempting to send sign-in link...");
+    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+    console.log("✅ Firebase email link sent!");
+    window.localStorage.setItem("emailForSignIn", email);
+    alert("Verification link sent to your email!");
+  } catch (error: any) {
+    console.error("❌ Error sending verification link:", error);
+    alert(error.message);
+  }
+};
 
   return (
     <div className="w-full">
