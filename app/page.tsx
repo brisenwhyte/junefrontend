@@ -16,7 +16,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   console.log("Email submitted:", email);
   console.log("gay");
   const actionCodeSettings = {
-    url: "http://localhost:3000/verify",
+    url: "https://june.money/verify",
     handleCodeInApp: true,
   };
   console.log("Auth object:", auth);
