@@ -20,7 +20,7 @@ export default function VerifyPage() {
 
           // ✅ Step 2: Send verified email to backend (Express)
           console.log("➡️ Sending verified email to backend...");
-          const response = await fetch("http://localhost:5000/api/verify-success", {
+          const response = await fetch("https://junebackend.onrender.com/api/verify-success", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
