@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Mail, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { sendSignInLinkToEmail } from "firebase/auth";
-import { auth } from "@/firebaseClient";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -14,21 +12,24 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   console.log("Email submitted:", email);
-  console.log("gay");
-  const actionCodeSettings = {
-    url: "https://june.money/verify",
-    handleCodeInApp: true,
-  };
-  console.log("Auth object:", auth);
+
   try {
-    console.log("Attempting to send sign-in link...");
-    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-    console.log("✅ Firebase email link sent!");
-    window.localStorage.setItem("emailForSignIn", email);
-    alert("Verification link sent to your email!");
-  } catch (error: any) {
-    console.error("❌ Error sending verification link:", error);
-    alert(error.message);
+    const response = await fetch("https://junebackend.onrender.com/api/send-signin-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send sign-in email");
+    }
+
+    const data = await response.json();
+    console.log("✅ Backend response:", data);
+    alert("✨ Check your inbox for a sign-in link from JUNE!");
+  } catch (error) {
+    console.error("❌ Error sending email:", error);
+    alert("Something went wrong while sending your sign-in link. Please try again.");
   }
 };
 
