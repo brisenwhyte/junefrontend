@@ -14,6 +14,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   console.log("Email submitted:", email);
 
   try {
+    // ✅ Store email BEFORE sending the verification link
+    window.localStorage.setItem("emailForSignIn", email);
+
     const response = await fetch("https://junebackend.onrender.com/api/send-signin-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
