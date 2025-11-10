@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'JUNE - Moneys new Season',
   description: 'JUNE stands for a new kind of money — open, sovereign, and human. Step into the light — sign up for early access.',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
