@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'JUNE - Moneys new Season',
-  description: 'JUNE stands for a new kind of money — open, sovereign, and human. Step into the light — sign up for early access.',
+  description: 'JUNE is your best BTC Savings app',
   icons: {
-    icon: '/icon.png',
+    icon: '/logo.png',
     apple: '/apple-icon.png',
   },
 };
