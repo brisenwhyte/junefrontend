@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { auth } from "@/firebaseClient";
 import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 
+export const dynamic = 'force-dynamic'; // ✅ ADD THIS LINE
+
 export default function VerifyPage() {
   const [status, setStatus] = useState("Verifying your email...");
-  const [referralCode, setReferralCode] = useState<string | null>(null);
+  const [referralCode, setReferralCode] = useState(null);
 
   useEffect(() => {
     const completeSignIn = async () => {
