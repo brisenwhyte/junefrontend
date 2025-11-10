@@ -5,7 +5,7 @@ import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 
 export default function VerifyPage() {
   const [status, setStatus] = useState("Verifying your email...");
-  const [referralCode, setReferralCode] = useState(null);
+  const [referralCode, setReferralCode] = useState<string | null>(null);
 
   useEffect(() => {
     const completeSignIn = async () => {
@@ -53,7 +53,7 @@ export default function VerifyPage() {
           // Redirect after showing referral code
           setTimeout(() => {
             window.location.href = "/";
-          }, 5000);
+          }, 40000);
 
         } catch (error) {
           console.error("Verification error:", error);
@@ -78,11 +78,20 @@ export default function VerifyPage() {
             <p className="text-3xl font-bold text-white tracking-wider mb-4">{referralCode}</p>
             <p className="text-white/80 text-sm">Share this with friends! 🚀</p>
             <p className="text-white/60 text-xs mt-4">Check your email for more details</p>
+            
+            <div className="mt-6 pt-4 border-t border-white/20">
+              <p className="text-yellow-300 text-sm font-semibold animate-pulse">
+                ⚠️ This page will disappear in 40 seconds
+              </p>
+              <p className="text-white/80 text-xs mt-2">
+                Copy your code quickly!
+              </p>
+            </div>
           </div>
         )}
         
         {referralCode && (
-          <p className="text-white/60 text-sm mt-6">Redirecting to home page...</p>
+          <p className="text-white/60 text-sm mt-6">Redirecting to home page in 40 seconds...</p>
         )}
       </div>
     </div>
