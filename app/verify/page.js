@@ -170,7 +170,7 @@ export default function VerifyPage() {
             
             {/* Redirect Notice */}
             <p className="text-white/50 text-xs mt-8">
-              Redirecting to home page in {timeLeft} seconds...
+              {timeLeft > 0 ? `Redirecting to home page in ${timeLeft} seconds...` : 'Redirecting now...'}
             </p>
           </>
         )}
