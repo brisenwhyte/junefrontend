@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic'; // ✅ ADD THIS LINE
 export default function VerifyPage() {
   const [status, setStatus] = useState("Verifying your email...");
   const [referralCode, setReferralCode] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(40);
 
   useEffect(() => {
     const completeSignIn = async () => {
@@ -68,6 +69,22 @@ export default function VerifyPage() {
 
     completeSignIn();
   }, []);
+
+  useEffect(() => {
+  if (!referralCode) return;
+
+  const timer = setInterval(() => {
+    setTimeLeft(prev => {
+      if (prev <= 1) {
+        clearInterval(timer);
+        return 0;
+      }
+      return prev - 1;
+    });
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, [referralCode]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#004499] via-[#5588aa] to-[#ff7733] p-4 relative">
