@@ -93,7 +93,7 @@ export default function Home() {
 
       const data = await response.json();
       console.log("✅ Backend response:", data);
-      alert("✨ Check your inbox for a sign-in link from JUNE!");
+      alert("☀️ Check your email to confirm your early access to June!");
       
       // Clear form
       setEmail("");
@@ -164,7 +164,7 @@ export default function Home() {
                 disabled={loading}
                 className="h-12 w-full rounded-full bg-white px-8 text-base font-medium text-gray-800 hover:bg-white/90 disabled:opacity-50"
               >
-                {loading ? "Processing..." : "Join Waitlist"}
+                {loading ? "Processing..." : "Join Early Access"}
               </Button>
             </form>
 
@@ -172,17 +172,17 @@ export default function Home() {
 
             <div className="max-w-2xl space-y-4 mb-12">
               <p className="text-lg font-satoshi tracking-wide text-white lg:text-xl">
-                JUNE STANDS FOR A NEW KIND OF MONEY — ONE WHERE
+                June helps families save simply — and
                 <br />
-                YOU'RE IN CONTROL.
+                grow together
               </p>
               <p className="text-lg font-satoshi tracking-wide text-white lg:text-xl">
-                STEP INTO THE LIGHT — SIGN UP FOR EARLY ACCESS.
+                Join early and be part of the new season of money
               </p>
             </div>
 
             {/* Leaderboard */}
-            {leaderboard.length > 0 && (
+            {/* {leaderboard.length > 0 && (
               <div className="w-full max-w-2xl mt-8">
                 <h2 className="text-3xl font-satoshi text-white mb-6">🏆 Leaderboard</h2>
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 space-y-3">
@@ -208,7 +208,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </section>
